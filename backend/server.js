@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ["http://localhost:3000/", "https://tasky.radu-rusu.com/"],
+    origin: ["http://localhost:3000/", "https://radu-rusu-tasky.onrender.com/"],
   })
 );
 app.use(taskRoutes);
