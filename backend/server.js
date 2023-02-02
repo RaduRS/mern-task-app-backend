@@ -15,7 +15,7 @@ app.use(
     origin: ["https://mern-task-app-omn9.onrender.com/"],
   })
 );
-app.use(taskRoutes);
+app.use("/api/tasks", taskRoutes);
 
 //.Conecting to DB and running the server
 mongoose

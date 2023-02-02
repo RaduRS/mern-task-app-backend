@@ -9,10 +9,10 @@ const {
 } = require("../controllers/taskController");
 
 //.Routes
-router.post("/api/tasks", createTask);
-router.get("/api/tasks", getAllTasks);
-router.get("/api/tasks/:id", getTask);
-router.delete("/api/tasks/:id", deleteTask);
-router.put("/api/tasks/:id", updateTask);
+router.post("/", createTask);
+router.get("/", getAllTasks);
+router.get("/:id", getTask);
+router.delete("/:id", deleteTask);
+router.put("/:id", updateTask);
 
 module.exports = router;
