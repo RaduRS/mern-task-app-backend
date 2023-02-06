@@ -12,11 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: [
-      "https://mern-task-app-omn9.onrender.com",
-      "https://www.tasky.radu-rusu.com",
-      "https://tasky.radu-rusu.com",
-    ],
+    origin: "*"
   })
 );
 app.use("/api/tasks", taskRoutes);
