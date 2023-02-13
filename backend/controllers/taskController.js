@@ -1,20 +1,37 @@
+const TaskCounter = require("../models/taskCounterSchema");
 const Task = require("../models/taskModel");
 
 //. Create a Task
 const createTask = async (req, res) => {
   try {
-    const task = await Task.create(req.body);
+    const taskCounter = await TaskCounter.findOneAndUpdate(
+      {},
+      { $inc: { count: 1 } },
+      { new: true, upsert: true }
+    );
+    const task = await Task.create({
+      ...req.body,
+      placeNumber: taskCounter.count,
+    });
     res.status(200).json(task);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 };
+// const createTask = async (req, res) => {
+//   try {
+//     const task = await Task.create(req.body);
+//     res.status(200).json(task);
+//   } catch (error) {
+//     res.status(500).json({ msg: error.message });
+//   }
+// };
 
 //.Get/Read all Tasks
 const getAllTasks = async (req, res) => {
   try {
     // const tasks = await Task.find();
-    const tasks = await Task.find({}).sort({ createdAt: -1 });
+    const tasks = await Task.find({}).sort({ placeNumber: 1 });
     res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ msg: error.message });

@@ -11,6 +11,10 @@ const taskSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    placeNumber: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
